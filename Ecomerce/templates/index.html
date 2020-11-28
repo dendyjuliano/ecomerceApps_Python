@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% include 'carousel.html' %}
+
+<div class="container">
+    <div class="info-panel">
+        <div class="row text-center justify-content-center">
+            {% for category in categorys %}
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <div class="card-body">
+                        <h5 class="card-title title-card"> <a href="">{{ category.name }}</a></h5>
+                        <img src="{{ category.image.url }}" class="card-img-top" alt="...">
+                        <a href="">See More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <a class="btn button mt-4" href="{% url 'category' %}">Read More</a>
+        </div>
+    </div>
+</div>
+<!-- end info panel -->
+<!-- fakta jurusan -->
+<div class="mt-5 fakta p-5">
+    <div class="container">
+        <div class="informasi">
+            <h1 class="text-white text-apk">ShopBack</h1>
+            <div class="row mt-5">
+                <div class="col-md-3 text-white">
+                    <img src="{% static 'images/icon/icon-siswa.png' %}" alt="" width="150" alt="workingspace"
+                        class="img-fluid">
+                    <h5 class="isi-informasi mt-4 text-1">120++</h5>
+                    <h5 class="isi-informasi">Jumlah Pengguna</h5>
+                </div>
+                <div class="col-md-3 text-white">
+                    <img src="{% static 'images/icon/icon-buku.png' %}" alt="" width="150" alt="workingspace"
+                        class="img-fluid">
+                    <h5 class="isi-informasi mt-4 text-1">12</h5>
+                    <h5 class="isi-informasi">Laporan Pembelian</h5>
+                </div>
+                <div class="col-md-3 text-white">
+                    <img src="{% static 'images/icon/icon-tropi.png' %}" alt="" width="150" alt="workingspace"
+                        class="img-fluid">
+                    <h5 class="isi-informasi mt-4 text-1">A</h5>
+                    <h5 class="isi-informasi">Akreditas Nasional</h5>
+                </div>
+                <div class="col-md-3 text-white">
+                    <img src="{% static 'images/icon/icon-grafik.png' %}" alt="" width="150" alt="workingspace"
+                        class="img-fluid">
+                    <h5 class="isi-informasi mt-4 text-1">70%</h5>
+                    <h5 class="isi-informasi">Berperan di Dunia</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end fakta jurusan -->
+<!-- working space -->
+<div class="container">
+    <div class="row workingspace mt-5">
+        <div class="col-lg-6">
+            <img src="{% static 'images/clothes.jpg' %}" alt="workingspace" class="img-fluid">
+        </div>
+        <div class="col-lg-6">
+            <h3>You <span>like</span> Shopping at <span>home</span></h3>
+            <p>belanja dengan suasana hati yang lebih asik dan mempelajari hal baru setiap harinya.</p>
+            <a href="{% url 'shop' %}" class="btn button">Shopp Now</a>
+        </div>
+    </div>
+</div>
+<!-- akhir working space -->
+
+<script>
+    $(document).ready(function () {
+        $(".category-card").hover(
+            function () {
+                $(this).addClass('shadow-lg').css('cursor', 'pointer');
+                $(this).addClass('transisi').css('transition', 'all 0.5s ease');
+            },
+            function () {
+                $(this).removeClass('shadow-lg');
+                $(this).removeClass('transisi');
+            }
+        );
+    });
+</script>
+
+{% endblock %}

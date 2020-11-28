@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="isi mt-5">
+        <h1>Category</h1>
+        <div class="row text-center">
+            {% for category in categorys %}
+            <div class="col-md-3">
+                <div class="card category-card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title title-card"> <a href="">{{ category.name }}</a></h5>
+                        <img src="{{ category.image.url }}" class="card-img-top" alt="...">
+                        <a href="">See More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

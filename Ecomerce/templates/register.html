@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-4 justify-content-center">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <form method="post">
+                    <div class="card-body">
+                        <h1 class="title">Register</h1>
+                        <p class="text-muted">Daftar sekarang agar dapat promo terbaik di SHOPBACK</p>
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success">{{ message }}</div>
+                        {% else %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn button">Submit</button>
+                        Sudah punya akun ?<a class="text-primary" href="{% url 'login' %}"> Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
