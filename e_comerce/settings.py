@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Ecomerce' #nama Apps yang di buat
+    'django.contrib.humanize',
+    'django_filters',
+    'Ecomerce', #nama Apps yang di buat
 ]
 
 MIDDLEWARE = [

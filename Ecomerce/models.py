@@ -6,6 +6,7 @@ class Category (models.Model) :
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='cover_product',null=True)
     status = models.IntegerField(null=True)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.name
@@ -18,6 +19,7 @@ class Product (models.Model) :
     qty = models.IntegerField()
     size = models.CharField(max_length=50)
     date = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='cover_product',null=True)
 
     def __str__(self):
         return self.name

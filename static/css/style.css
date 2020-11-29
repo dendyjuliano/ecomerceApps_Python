@@ -114,9 +114,18 @@ body{
 	background-color: #192a56;
 }
 
-
 .fakta .informasi{
 	text-align: center;
+}
+
+.label-check{
+    font-size: 20px;
+}
+
+.check-input{
+    list-style-type: none;
+    margin-left: -17px;
+    font-size: 17px;
 }
 
 @media (min-width: 992px) {
@@ -125,5 +134,9 @@ body{
         width: auto;
         object-fit: cover;
         background-size: cover;
+    }
+    .check-input{
+        margin-left: -17px;
+        font-size: 17px;
     }
 }

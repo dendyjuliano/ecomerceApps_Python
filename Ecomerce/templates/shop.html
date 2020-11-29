@@ -1,4 +1,59 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
+<div class="container">
+    <div class="isi mt-5">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <h3 class="title">Category</h3>
+                <hr>
+                <div class="check">
+                    <form method="get">
+                        {{dataFilter.form.as_p}}
+                        <button class="btn button btn-block" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h3 class="title">Shoop Now</h3>
+                <hr>
+                <div class="row">
+                    {% for product in dataFilter.qs %}
+                    <div class="col-md-4">
+                        <a href="" class="text-decoration-none">
+                            <div class="card mb-3 card-product">
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title title">{{ product.name }}</h5>
+                                    <p class="card-text">
+                                        {{ product.description|truncatechars:35 }}
+                                    </p>
+                                    <p class="card-text text-danger">
+                                        Rp. {{ product.price|intcomma }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".card-product").hover(
+            function () {
+                $(this).addClass('shadow-lg').css('cursor', 'pointer');
+                $(this).addClass('transisi').css('transition', 'all 0.5s ease');
+            },
+            function () {
+                $(this).removeClass('shadow-lg');
+                $(this).removeClass('transisi');
+            }
+        );
+    });
+</script>
 {% endblock %}

@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from django.conf import settings #tambahkan import settings agar bisa mengakses env
-from Ecomerce.models import Category
+from Ecomerce.models import Category,Product
 from django.contrib import messages
-
-# Create your views here.
 from Ecomerce.forms import LoginForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from Ecomerce.filters import OrderProduct,SearchProduct
+
+# Create your views here.
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
@@ -16,9 +17,12 @@ class CustomLoginView(LoginView):
 def index(request):
     #variable
     categorys = Category.objects.filter()[:3]
+    products = Product.objects.all()
+    dataSearch = SearchProduct(request.GET,queryset=products)
 
     konteks = {
-        'categorys':categorys
+        'categorys':categorys,
+        'dataSearch' : dataSearch,
     }
 
     return render(request,'index.html',konteks)
@@ -51,6 +55,19 @@ def category(request):
 
     return render(request,'category.html',konteks)
 
-def shop(request):
-    return render(request,'shop.html')
+def shop(request):        
+    categorys = Category.objects.all()
+    products = Product.objects.all()
+    dataFilter = OrderProduct(request.GET,queryset=products)
+    dataSearch = SearchProduct(request.GET,queryset=products)
+    konteks = {
+        'categorys':categorys,
+        'products':products,
+        'dataFilter':dataFilter,
+        'dataSearch':dataSearch,
+    }
+    return render(request,'shop.html',konteks)
+
+def about(request):
+    return render(request,'about.html');
 

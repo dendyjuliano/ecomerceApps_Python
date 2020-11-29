@@ -12,7 +12,8 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(next_page=('home')),name='logout'),
     path('register/',register,name='register'),
     path('category/',category,name='category'),
-    path('shop/',shop,name='shop'),
+    path(r'^shop/$',shop,name='shop'),
+    path('about/',about,name='about'),
 ]
 
 if settings.DEBUG:
