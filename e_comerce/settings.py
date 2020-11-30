@@ -87,14 +87,24 @@ WSGI_APPLICATION = 'e_comerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_ecomerce_py',
-        'USER': 'root',
-        'PASSWORD': 'dendylords123',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database name',
+        'USER': 'database user',
+        'PASSWORD': 'database password',
+        'HOST': 'database endpoint',
+        'PORT': 'database port'
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'db_ecomerce_py',
+#         'USER': 'root',
+#         'PASSWORD': 'dendylords123',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
 
 
 # Password validation
