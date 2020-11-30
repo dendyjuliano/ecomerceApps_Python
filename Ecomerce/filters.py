@@ -5,7 +5,7 @@ from django import forms
 class OrderProduct(django_filters.FilterSet):
     name = django_filters.CharFilter(label= '',lookup_expr='icontains',widget=forms.TextInput(
         attrs = {
-            'class':'form-control',
+            'class':'hide',
             'placeholder':'Search Here ......',
             'autocomplete':'off'
         }

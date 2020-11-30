@@ -21,6 +21,9 @@ a{
     background-color: #192a56;
     color: white;
 }
+.warna:hover{
+    color: white;
+}
 .text-apk{
     font-family: 'Montserrat';
     font-size: 30px;
@@ -127,6 +130,34 @@ body{
     margin-left: -17px;
     font-size: 17px;
 }
+
+/* for quantity */
+/* .quantity {
+    padding-top: 20px;
+    margin-right: 60px;
+  } */
+  .quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+  }
+
+ 
+  .quantity .btn {
+   
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+  }
+
+  .detail-product img{
+      object-fit: cover;
+      width: 100%;
+  }
 
 @media (min-width: 992px) {
     .carousel img{

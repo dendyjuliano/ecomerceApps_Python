@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="card detail-product">
+            <div class="row no-gutters">
+                <div class="col-md-5">
+                    <img src="{{ product.image.url }}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="card-title title">{{ product.name }}</h3>
+                                <button class="btn button">{{ product.category }}</button>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="float-right text-danger">Rp. {{ product.price|intcomma }}</h3>
+                            </div>
+                        </div>
+                        <br>
+                        <p class="card-text text-muted">{{ product.description }}</p>
+                        <form action="{% url 'cart-add' product.id %}" type="get">
+                        {% csrf_token %}
+                            <span>
+                                <p class="card-text text-muted">
+                                    Size &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ product.size }}
+                                </p>
+                                <div class="quantity">
+                                    <p class="card-text text-muted">
+                                        Quantity &nbsp;&nbsp;
+                                        <button class="btn plus-btn" type="button" name="button">
+                                            +
+                                        </button>
+                                        <input type="text" readonly name="qty" value="1" class="input">
+                                        <button class="btn minus-btn" type="button" name="button">
+                                            -
+                                        </button>
+                                        tersisa {{ product.qty }} buah
+                                    </p>
+                                </div>
+                            </span>
+                            <div class="footer mt-3">
+                                <button type="submit" class="btn warna float-right"><i
+                                        class="fas fa-cart-plus"></i> Masukan
+                                    Keranjang</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.minus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $input = $('.input');
+        var value = parseInt($input.val());
+
+
+        if (value) {
+            value = value - 1
+        } else {
+            value = 0
+        }
+
+        $input.val(value);
+
+    });
+
+    $('.plus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $input = $('.input');
+        var value = parseInt($input.val());
+
+        if (value) {
+            value = value + 1;
+        } else {
+            value = 1;
+        }
+
+        $input.val(value);
+    });
+</script>
+{% endblock %}

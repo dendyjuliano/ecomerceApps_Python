@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="container">
+    <div class="card shadow mt-5">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>PRODUCT</th>
+                        <th>NAME</th>
+                        <th>QTY</th>
+                        <th>PRICE</th>
+                        <th>TOTAL</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for value in cart %}
+                    <tr>
+                        <td><img src="{{ value.product.image.url }}" width="60" alt=""></td>
+                        <td>{{ value.product.name }}</td>
+                        <td>
+                            <div class="quantity">
+                                <a class="btn plus-btn" href="{% url 'cart-increment' value.object_id %}">
+                                    +
+                                </a>
+                                <input type="text" readonly name="qty" value="{{ value.quantity }}" class="input">
+                                <a class="btn minus-btn" href="{% url 'cart-decrement' value.object_id %}">
+                                    -
+                                </a>
+                            </div>
+                        </td>
+                        <td>{{ value.product.price|intcomma }}</td>
+                        <td>{{ value.total_price|intcomma }}</td>
+                        <td><a href="{% url 'cart-remove' value.object_id %}" class="btn btn-danger">X</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <button class="btn btn-lg button float-right">CHECKOUT</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

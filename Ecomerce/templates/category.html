@@ -11,7 +11,11 @@
                     <div class="card-body">
                         <h5 class="card-title title-card"> <a href="">{{ category.name }}</a></h5>
                         <img src="{{ category.image.url }}" class="card-img-top" alt="...">
-                        <a href="">See More</a>
+                        <form action="{% url 'shop' %}" method="get">
+                            <input type="checkbox" name="category" hidden value="{{ category.id }}" class="check-input"
+                                checked>
+                            <button class="btn btn-sm button mt-3" type="submit">Select</button>
+                        </form>
                     </div>
                 </div>
             </div>

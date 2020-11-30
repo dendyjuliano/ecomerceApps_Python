@@ -20,7 +20,7 @@
                 <div class="row">
                     {% for product in dataFilter.qs %}
                     <div class="col-md-4">
-                        <a href="" class="text-decoration-none">
+                        <a href="{% url 'detail-product' product.id %}" class="text-decoration-none">
                             <div class="card mb-3 card-product">
                                 <img src="{{ product.image.url }}" class="card-img-top" alt="...">
                                 <div class="card-body">

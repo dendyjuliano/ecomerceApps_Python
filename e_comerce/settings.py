@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django_filters',
-    'Ecomerce', #nama Apps yang di buat
+    'cart',
+    'Ecomerce',  # nama Apps yang di buat
 ]
 
 MIDDLEWARE = [
@@ -57,16 +58,21 @@ ROOT_URLCONF = 'e_comerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'], #harus diisi nama dari template website
+        'DIRS': ['templates'],  # harus diisi nama dari template website
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.template.context_processors.media', #ditambahkan agar bisa menyimpan gambar
+                # ditambahkan agar bisa menyimpan gambar
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
+            'libraries':{
+                'poll_extras': 'Ecomerce.templates.poll_extras',
+            }
         },
     },
 ]
@@ -81,10 +87,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_ecomerce_py',
-        'USER':'root',
-        'PASSWORD':'dendylords123',
-        'HOST':'localhost',
-        'PORT':'3306'
+        'USER': 'root',
+        'PASSWORD': 'dendylords123',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
@@ -125,15 +131,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'   #untuk menyimpan asset gambar,css, dan js dalam static
+STATIC_URL = '/static/'  # untuk menyimpan asset gambar,css, dan js dalam static
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-MEDIA_URL = '/media/'            #tempat penyimpanan uploads gambar
+MEDIA_URL = '/media/'  # tempat penyimpanan uploads gambar
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # url default setelah login
 LOGIN_REDIRECT_URL = 'home'
 # untuk url login
 LOGIN_URL = 'login'
+
+CART_SESSION_ID = 'cart'
