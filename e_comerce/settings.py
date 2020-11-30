@@ -159,6 +159,4 @@ LOGIN_URL = 'login'
 
 CART_SESSION_ID = 'cart'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # django_heroku.settings(locals())
