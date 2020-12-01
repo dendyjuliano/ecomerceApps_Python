@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '7ew+4w=5r-#&8&3n_(%2roiz(*3*hc6b=98cm5axm5+3=l-+bh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['shoopback.herokuapp.com', '127.0.0.1']
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'cart',
     'Ecomerce',  # nama Apps yang di buat
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -142,9 +143,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+STATIC_HOST = 'https://shoopback.herokuapp.com/'
+STATIC_URL = STATIC_HOST + '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles',
-STATIC_URL = '/static/'  # untuk menyimpan asset gambar,css, dan js dalam static
+# STATIC_URL = '/static/'  # untuk menyimpan asset gambar,css, dan js dalam static
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
