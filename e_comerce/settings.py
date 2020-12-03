@@ -136,10 +136,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_HOST = 'https://shoopnow.herokuapp.com/'
-STATIC_URL = STATIC_HOST + '/static/'
+# STATIC_HOST = 'https://shoopnow.herokuapp.com/'
+# STATIC_URL = STATIC_HOST + '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles',
-# STATIC_URL = '/static/'  # untuk menyimpan asset gambar,css, dan js dalam static
+STATIC_URL = '/static/'  # untuk menyimpan asset gambar,css, dan js dalam static
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
