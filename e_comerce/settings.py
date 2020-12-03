@@ -27,7 +27,7 @@ SECRET_KEY = '7ew+4w=5r-#&8&3n_(%2roiz(*3*hc6b=98cm5axm5+3=l-+bh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shoopnow.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['shoopback-cms.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
